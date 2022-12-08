@@ -1,5 +1,6 @@
 const { routerAccount } = require('./routers/routersAccounts');
-// const handleError = require('./middlewares/hadleError');
+const { routerUsers } = require('./routers/routerUsers');
+const { middlewareError } = require('./middlewares/hadleError');
 const express = require('express');
 require('dotenv/config');
 
@@ -9,6 +10,7 @@ app.use(express.json());
 const { PORT } = process.env;
 
 app.use('/accounts', routerAccount);
-// app.use(handleError);
+app.use('/register', routerUsers);
+app.use(middlewareError);
 
 app.listen(PORT, () => console.log(`Listen port ${PORT}`));

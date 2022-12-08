@@ -8,7 +8,7 @@ const knowErros = {
 };
 
 /** @type {import('express').ErrorRequestHandler} */
-const hadleError = (err, _req, res, _next) => {
+const middlewareError = (err, _req, res, _next) => {
   if (Joi.isError(err)) {
     const [code, message] = err.message.split('|')
     return res.status(Number(code)).json({ message: `${message}` });
@@ -16,7 +16,8 @@ const hadleError = (err, _req, res, _next) => {
 
   const error = knowErros[err];
   if (error) return res.status(error.code).json({ message: `${error.message}` });
+  console.log(err)
   return res.status(500).json({ message: "Internal Server Error" });
 }
 
-module.exports = { hadleError };
+module.exports = { middlewareError };
