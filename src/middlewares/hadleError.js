@@ -4,7 +4,7 @@ const { httpstatuscode } = require('../utils/httpstatuscode');
 const knowErros = {
     ACCOUNT_NOT_EXIST: { code: `${httpstatuscode.NOT_FOUND}`, message: "A conta informada não existe" },
     USER_NOT_EXIST: { code: `${httpstatuscode.NOT_FOUND}`, message: "O Usuario informado não existe" },
-    USER_NOT_HAVE_ACCOUNT: { code: `${httpstatuscode.NOT_FOUND}`, message: "Restaurant not have products" }
+    DUPLICATE_USER: { code: `${httpstatuscode.BAD_REQUEST}`, message: "Usuario já cadastrado, por favor utilize outro username" }
 };
 
 /** @type {import('express').ErrorRequestHandler} */
@@ -16,8 +16,7 @@ const middlewareError = (err, _req, res, _next) => {
 
   const error = knowErros[err];
   if (error) return res.status(error.code).json({ message: `${error.message}` });
-  console.log(err)
-  return res.status(500).json({ message: "Internal Server Error" });
+  return res.status(httpstatuscode.INTERNAL_SERVER).json({ message: "Internal Server Error" });
 }
 
 module.exports = { middlewareError };
