@@ -4,7 +4,8 @@ const { httpstatuscode } = require('../utils/httpstatuscode');
 const knowErros = {
     ACCOUNT_NOT_EXIST: { code: `${httpstatuscode.NOT_FOUND}`, message: "A conta informada não existe" },
     USER_NOT_EXIST: { code: `${httpstatuscode.NOT_FOUND}`, message: "O Usuario informado não existe" },
-    DUPLICATE_USER: { code: `${httpstatuscode.BAD_REQUEST}`, message: "Usuario já cadastrado, por favor utilize outro username" }
+    DUPLICATE_USER: { code: `${httpstatuscode.BAD_REQUEST}`, message: "Usuario já cadastrado, por favor utilize outro username" },
+    TOKEN_NOT_FOUND: { code: `${httpstatuscode.NOT_FOUND}`, message: "Token Invalido ou inexistente" }
 };
 
 /** @type {import('express').ErrorRequestHandler} */

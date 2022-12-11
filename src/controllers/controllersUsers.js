@@ -3,11 +3,14 @@ const { httpstatuscode } = require('../utils/httpstatuscode');
 const { schemaRegistration } = require('../utils/validationsJoi/registrationLogin');
 
 const controllersUsers = {
-  /** @type {import('express').RequestParamHandler} */  
+  /** @type {import('express').RequestParamHandler} */ 
   register: async (req, res, next) => {
     try {
       await schemaRegistration.validationRegistration(req.body);
-      await servicesUsers.register(req.body);
+      const error = await servicesUsers.register(req.body);
+      if (error) {
+        return next('DUPLICATE_USER');
+      } 
       return res.status(httpstatuscode.OK).json('Usuario Registrado :)');
     } catch (error) {
       if (error.sqlMessage) {
@@ -15,6 +18,7 @@ const controllersUsers = {
           next('DUPLICATE_USER');
         }
       }
+      console.log(error);
       next(error);
     }
   }

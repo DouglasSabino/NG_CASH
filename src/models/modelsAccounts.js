@@ -13,6 +13,10 @@ const modelsAccounts = {
       await db.query(SQL_CREATE_ACCOUNT, [id, 100]);
       return id;
     },
+    deleteAccount: async (AccountId) =>  {
+      const SQL_DELETE_ACCOUNT = 'DELETE FROM Accounts WHERE id=?';
+      await db.query(SQL_DELETE_ACCOUNT, [AccountId]);
+    },
 }
 
 module.exports = { modelsAccounts };
