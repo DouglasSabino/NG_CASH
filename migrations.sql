@@ -17,3 +17,18 @@ CREATE TABLE Users (
  ON DELETE CASCADE
  ON UPDATE CASCADE
 );
+
+// CRIA TABELA Transactions
+CREATE TABLE Transactions (
+  id VARCHAR(30) NOT NULL PRIMARY KEY,
+  debitedAccountId VARCHAR(30) NOT NULL,
+  creditedAccountId VARCHAR(30) NOT NULL,
+  value FLOAT NOT NULL,
+  createdAt TIMESTAMP NOT NULL,
+  CONSTRAINT fk_debitedAccount 
+  FOREIGN KEY (debitedAccountId) 
+  REFERENCES Accounts (id),
+  CONSTRAINT FK_creditedAccountId 
+  FOREIGN KEY (creditedAccountId) 
+  REFERENCES Accounts (id)
+);

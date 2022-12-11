@@ -21,7 +21,11 @@ const controllersUsers = {
       console.log(error);
       next(error);
     }
-  }
+  },
+  /** @type {import('express').RequestParamHandler} */
+  cashout: async (req, res, next) => {
+    
+  },
 };
 
 module.exports = { controllersUsers };

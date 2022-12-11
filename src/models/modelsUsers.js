@@ -16,7 +16,10 @@ const modelsUsers = {
       await modelsAccounts.deleteAccount(AccountId);
       return error;
     }
-  }
+  },
+  cashout: async (body) => {
+    const { userToReceive, balance } = body;
+  },
 };
 
 module.exports = { modelsUsers };
