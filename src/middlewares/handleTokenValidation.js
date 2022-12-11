@@ -8,7 +8,7 @@ const handlerTokenValidation = async (req, _res, next) => {
     const decodedUser = makeToken.decoder(userToken);
     req.user = decodedUser.payload;
   } catch (error) {
-    return next('INVALID_TOKEN');
+    return next('TOKEN_NOT_FOUND');
   }
   return next();
 };

@@ -2,9 +2,9 @@ const { db } = require('./connection');
 const cuid = require('cuid');
 
 const modelsAccounts = {
-    getAll: async () => {
-      const SQL_GET_ACCOUNTS = 'SELECT * FROM Accounts'; 
-      const [Accounts] = await db.query(SQL_GET_ACCOUNTS);
+    getAccount: async (id) => {
+      const SQL_GET_ACCOUNTS = 'SELECT * FROM Accounts WHERE id=?'; 
+      const [Accounts] = await db.query(SQL_GET_ACCOUNTS, [id]);
       return Accounts;
     },
     createAccount: async () => {
