@@ -4,9 +4,13 @@ const { httpstatuscode } = require('../utils/httpstatuscode');
 const controllersLogin = {
   /** @type {import('express').RequestParamHandler} */
   login: async (req, res, _next) => {
-    const user = await serviceslogin.login(req.body);
-    if (user.length !== 0) return res.status(httpstatuscode.OK).json('O Usuario Existe :)');
-    return res.status(httpstatuscode.BAD_REQUEST).json('O Usuario Não Existe :(');
+    const [user, token] = await serviceslogin.login(req.body);
+    console.log(token);
+    if (user.length !== 0) {
+      if (user[0].auth) return res.status(httpstatuscode.OK).json({message: 'Login efetuado !'});
+      else return res.status(httpstatuscode.BAD_REQUEST).json({message: 'Acesso negado'});
+    }
+    return res.status(httpstatuscode.BAD_REQUEST).json({message: 'Usuario inexistente'});
   },
 };
 
