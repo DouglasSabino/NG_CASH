@@ -3,7 +3,7 @@ const { httpstatuscode } = require('../utils/httpstatuscode');
 const { schemaRegistration } = require('../utils/validationsJoi/registrationLogin');
 
 const controllersUsers = {
-  /** @type {import('express').RequestParamHandler} */ 
+  /** @type { import('express').RequestParamHandler } */ 
   register: async (req, res, next) => {
     try {
       await schemaRegistration.validationRegistration(req.body);

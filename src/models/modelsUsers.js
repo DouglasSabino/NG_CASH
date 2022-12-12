@@ -4,6 +4,11 @@ const bcrypt = require('bcrypt');
 const cuid = require('cuid');
 
 const modelsUsers = {
+  verifyBalance: async (loggedUser) => {
+    const SQL_GET_LOGGEDUSER_ACCOUNT = 'SELECT * FROM Accounts WHERE id=?';
+    const [loggedAccount] = await db.query(SQL_GET_LOGGEDUSER_ACCOUNT, [loggedUser.accountId]);
+    return loggedAccount;
+  },
   register: async (body) => {
     const salt = bcrypt.genSaltSync(10);
     const { username, password } = body;
