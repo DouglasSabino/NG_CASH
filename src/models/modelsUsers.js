@@ -17,9 +17,6 @@ const modelsUsers = {
       return error;
     }
   },
-  cashout: async (body) => {
-    const { userToReceive, balance } = body;
-  },
 };
 
 module.exports = { modelsUsers };

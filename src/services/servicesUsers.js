@@ -5,9 +5,6 @@ const servicesUsers = {
     const error = await modelsUsers.register(body);
     return error;
   },
-  cashout: async (body) => {
-    
-  },
 };
 
 module.exports = { servicesUsers };
