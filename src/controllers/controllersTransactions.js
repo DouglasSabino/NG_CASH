@@ -9,6 +9,7 @@ const controllersTransactions = {
       const { user: loggedUser } = req;
       const [reciveUser, loggedAccount] = await servicesTransactions.transactions(req.body, loggedUser);
       const [{ password, salt, ...restofUserToCredit }] = reciveUser;
+      if (loggedUser.username === restofUserToCredit.username) return next('UNATUTHORIZED_TRANSACTION') 
       if (reciveUser.length < 1) return next('ACCOUNT_NOT_EXIST');
       if (Number(loggedAccount[0].balance) < Number(balance)) return next('INSUFFICIENT_BALANCE');
       await servicesTransactions.cashout(loggedUser, restofUserToCredit, balance);
