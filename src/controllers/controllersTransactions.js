@@ -13,9 +13,20 @@ const controllersTransactions = {
       if (reciveUser.length < 1) return next('ACCOUNT_NOT_EXIST');
       if (Number(loggedAccount[0].balance) < Number(balance)) return next('INSUFFICIENT_BALANCE');
       await servicesTransactions.cashout(loggedUser, restofUserToCredit, balance);
+      await servicesTransactions.registerTransictions(loggedUser,restofUserToCredit, balance);
       if (reciveUser.length !== 0) return res.status(httpstatuscode.OK).json('existe'); 
     } catch (error) {
+      console.log(error);
       next(error);
+    }
+  },
+  findBy: async (req, res, _next) => {
+    try {
+      const { date, operation } = req.body;
+      const bankStatement = await servicesTransactions.findBy(date, operation, req.user);
+      return res.status(httpstatuscode.OK).json(bankStatement);
+    } catch (error) {
+      console.log(error);
     }
   },
 };

@@ -5,6 +5,7 @@ const modelsLogin = {
   verifyIfUserExist: async (username) => {
     const SQL_GET_USER = 'SELECT * FROM Users WHERE username=?';
     const [user] = await db.query(SQL_GET_USER, [username]);
+    console.log(user);
     return user;
   },
   verifyPassword: async (password, salt, hash) => {
