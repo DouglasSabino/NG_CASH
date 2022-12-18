@@ -15,8 +15,11 @@ const servicesTransactions = {
     if (!operation) {
       const bankStatement = await modelsTransactions.findByDate(date);
       return bankStatement;
+    }else if (!date) {
+      const bankStatement = await modelsTransactions.findByOperation(operation, loggedUser);
+      return bankStatement;
     }else {
-      const bankStatement = await modelsTransactions.findByDateAndOperation(date, operation, loggedUser);
+      const bankStatement = await modelsTransactions.findByOperationAndDate(date, operation, loggedUser);
       return bankStatement;
     }
   },

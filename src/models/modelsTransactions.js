@@ -28,7 +28,7 @@ const modelsTransactions = {
   },
   registerTransictions: async (loggedUser,restofUserToCredit, balance) => {
     const SQL_REGISTER_TRANSACTION = "INSERT INTO Transactions (id, debitedAccountId, creditedAccountId, value, createdAt) VALUES (?,?,?,?,?)";
-    const timestamp = moment(Date.now()).format('YYYY-MM-DD HH:MM:SS');
+    const timestamp = moment(Date.now()).format('YYYY-MM-DD HH:MM');
     await db.query(SQL_REGISTER_TRANSACTION, [cuid(), loggedUser.accountId, restofUserToCredit.accountId, balance, timestamp]);
   },
   findByDate: async (date) => {
@@ -36,7 +36,7 @@ const modelsTransactions = {
     const [bankStatement] = await db.query(SQL_GET_TRANSACTIONS, [date]+'%');
     return bankStatement;
   },
-  findByDateAndOperation: async (date, operation, loggedUser) => {
+  findByOperation: async (operation, loggedUser) => {
     if (operation === 'cashout') {
       const SQL_GET_TRANSACTIONS = "SELECT * FROM Transactions WHERE debitedAccountId=? ORDER BY createdAt";
       const [bankStatement] = await db.query(SQL_GET_TRANSACTIONS, loggedUser.accountId);
@@ -44,6 +44,17 @@ const modelsTransactions = {
     } else if (operation === 'cashin') {
       const SQL_GET_TRANSACTIONS = "SELECT * FROM Transactions WHERE creditedAccountId=? ORDER BY createdAt";
       const [bankStatement] = await db.query(SQL_GET_TRANSACTIONS, loggedUser.accountId);
+      return bankStatement;
+    }
+  },
+  findByOperationAndDate: async (date, operation, loggedUser) => {
+    if (operation === 'cashout') {
+      const SQL_GET_TRANSACTIONS = "SELECT * FROM Transactions WHERE debitedAccountId=? AND createdAt LIKE ? ORDER BY createdAt";
+      const [bankStatement] = await db.query(SQL_GET_TRANSACTIONS, [loggedUser.accountId, date+'%']);
+      return bankStatement;
+    } else if (operation === 'cashin') {
+      const SQL_GET_TRANSACTIONS = "SELECT * FROM Transactions WHERE creditedAccountId=? AND createdAt LIKE ? ORDER BY createdAt";
+      const [bankStatement] = await db.query(SQL_GET_TRANSACTIONS, [loggedUser.accountId, date+'%']);
       return bankStatement;
     }
   },

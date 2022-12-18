@@ -14,7 +14,8 @@ const controllersTransactions = {
       if (Number(loggedAccount[0].balance) < Number(balance)) return next('INSUFFICIENT_BALANCE');
       await servicesTransactions.cashout(loggedUser, restofUserToCredit, balance);
       await servicesTransactions.registerTransictions(loggedUser,restofUserToCredit, balance);
-      if (reciveUser.length !== 0) return res.status(httpstatuscode.OK).json('existe'); 
+      console.log(restofUserToCredit);
+      if (reciveUser.length !== 0) return res.status(httpstatuscode.OK).json(`Transferência para ${restofUserToCredit.username} realizada com sucesso !!`); 
     } catch (error) {
       console.log(error);
       next(error);
