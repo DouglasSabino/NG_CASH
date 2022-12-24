@@ -3,11 +3,13 @@ const { routerUsers } = require('./routers/routerUsers');
 const { routerLogin } = require('./routers/routerLogin');
 const { routerTransactions } = require('./routers/routerTransactions');
 const { middlewareError } = require('./middlewares/hadleError');
+const cors = require('cors');
 const express = require('express');
 require('dotenv/config');
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 const { PORT } = process.env;
 

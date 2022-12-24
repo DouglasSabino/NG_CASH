@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import appContext from './appContext';
 
 function ContextProvider({ children }) {
-  const [user, setUser] = useState('deu bom');
+  const [user, setUser] = useState('');
   const [password, setPassword] = useState('');
 
   const contextValue = {

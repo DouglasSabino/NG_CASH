@@ -1,8 +1,35 @@
 import { useContext } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
 import appContext from '../context/appContext';
+import Axios from 'axios';
 
 function Login() {
-  const { user } = useContext(appContext);
+  const { user, setUser, password, setPassword } = useContext(appContext);
+  const handleClick = () => {
+    try {
+      Axios.post('http://localhost:3001/register', {
+        username: user,
+        password
+      }).then((response) => {
+        console.log(response);
+      })
+    } catch (error) {
+     console.log(error.message); 
+    }
+  };
+
+  const handleChange = ({target}) => {
+    if ( target.name === "fieldUser") {
+      setUser(target.value);
+    } else {
+      setPassword(target.value);
+    }
+  };
+
+  const notify = () => {
+    <ToastContainer autoClose={3000} position={toast.POSITION.BOTTOM_LEFT}/>
+  }
+
   return (
    <div className="pt-40 h-[100vh] w-[100vw] bg-cover bg-[url('../public/images/background.jpg')]">
     <div  className="border-2 rounded-3xl flex flex-col justify-center mx-[38rem] px-16 shadow-2xl shadow-gray-600">
@@ -13,13 +40,25 @@ function Login() {
         />
       </div>
       <div className="flex justify-center mb-4 px-2 text-center">
-        <input className="placeholder:text-gray-500 pl-[14px]" type="text" placeholder="Digite seu usuario"/>
+        <input 
+          className="placeholder:text-gray-500 pl-[14px]" 
+          type="text"
+          name="fieldUser" 
+          placeholder="Digite seu usuario"
+          onChange={ handleChange }
+        />
       </div>
       <div className="flex justify-center mb-8">
-        <input className="placeholder:text-gray-500 pl-[14px]" type="password" placeholder="Digite sua senha"/>
+        <input 
+          className="placeholder:text-gray-500 pl-[14px]" 
+          type="password"
+          name="fieldPass"  
+          placeholder="Digite sua senha"
+          onChange={ handleChange }
+        />
       </div>
       <div className="bg-black text-cyan-50 mx-10 mb-7  flex justify-center shadow-md shadow-gray-600">
-        <input className="" type="submit" value="Login" onClick={() => { window.alert(user) }}/>
+        <input className="" type="submit" value="Login" onClick={ notify } />
       </div>
     </div>
    </div>

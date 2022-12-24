@@ -5,4 +5,5 @@ const routerUsers = express.Router();
 
 routerUsers.post('/', controllersUsers.register);
 
+
 module.exports = { routerUsers }
