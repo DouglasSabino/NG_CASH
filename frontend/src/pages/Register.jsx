@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 import appContext from '../context/appContext';
 import Axios from 'axios';
 
-function Login() {
+function Register() {
   const { user, setUser, password, setPassword } = useContext(appContext);
   const handleClick = () => {
       Axios.post('http://localhost:3001/register', {
@@ -52,11 +52,11 @@ function Login() {
         />
       </div>
       <div className="bg-black text-cyan-50 mx-10 mb-7  flex justify-center shadow-md shadow-gray-600">
-        <input className="" type="submit" value="Login" onClick={ handleClick } />
+        <input className="" type="submit" value="Register" onClick={ handleClick } />
       </div>
     </div>
    </div>
   );
 }
 
-export default Login;
+export default Register;
