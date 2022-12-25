@@ -66,7 +66,7 @@
 </ul>
 
 <h2>⚠️ IMPORTANTE ⚠️</h2>
-<p>Nas pastas "backend" e "frontend" existem arquivos chamados ".env.example" renomei-os para ".env" e configure suas variaveis de ambiente neles. Na basta "backend" exitem dois arquivos "migrations.sql" e "seeders.sql" eles tem as querys para criar e popular as tabelas respectivamente no banco de dados para falicitar testes. A aplicação ainda não é responsiva por favor utilize em resolução de desktop (1920 x 1080 Recomendada).</p>
+<p>Nas pastas "backend" e "frontend" existem arquivos chamados ".env.example" renomei-os para ".env" e configure suas variaveis de ambiente neles. Na pasta "backend" exitem dois arquivos "migrations.sql" e "seeders.sql" eles tem as querys para criar e popular as tabelas respectivamente no banco de dados para falicitar testes. A aplicação ainda não é responsiva por favor utilize em resolução de desktop (1920 x 1080 Recomendada).</p>
 
 <h2>🛠 Status 🛠</h2>
 <p>Backend concluido e frontend iniciado</p>

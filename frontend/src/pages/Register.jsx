@@ -4,15 +4,25 @@ import appContext from '../context/appContext';
 import Axios from 'axios';
 
 function Register() {
-  const { user, setUser, password, setPassword } = useContext(appContext);
+  const { 
+    user, 
+    setUser, 
+    password, 
+    setPassword, 
+  } = useContext(appContext);
+
   const handleClick = () => {
-      Axios.post('http://localhost:3001/register', {
+      Axios.post('http://localhost:3001/register',{
         username: user,
         password
       }).then((_response) => {
         toast.success('Usuario Criado com Sucesso');
       }).catch((e) => {
-        toast.error(e.message);
+        if (e.response.data.message.includes('Usuario já cadastrado')) {
+          toast.error(e.response.data.message);  
+        } else {
+          toast.error(e.message);
+        }
       });
   };
 
@@ -21,7 +31,7 @@ function Register() {
       setUser(target.value);
     } else {
       setPassword(target.value);
-    }
+    } 
   };
 
   return (

@@ -1,18 +1,23 @@
 import { useContext } from 'react';
 import { toast } from 'react-toastify';
 import appContext from '../context/appContext';
+import { useNavigate } from 'react-router-dom';
 import Axios from 'axios';
 
 function Login() {
   const { user, setUser, password, setPassword } = useContext(appContext);
+  const history = useNavigate();
   const handleClick = () => {
-      Axios.post('http://localhost:3001/register', {
+      Axios.post('http://localhost:3001/login', {
         username: user,
         password
-      }).then((_response) => {
-        toast.success('Usuario Criado com Sucesso');
+      }).then((response) => {
+        console.log(response.data.message);
+        toast.success(response.data.message);
+        history("/home");
       }).catch((e) => {
-        toast.error(e.message);
+        console.log(e);
+        toast.error(e.response.data.message);
       });
   };
 
