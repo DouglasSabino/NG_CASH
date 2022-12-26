@@ -12,8 +12,12 @@ function Login() {
         username: user,
         password
       }).then((response) => {
-        console.log(response.data.message);
-        toast.success(response.data.message);
+        const [message, token, id, usename, accountId] = response.data.message.split('+');
+        const user = { id, username: usename, accountId }
+        const u = JSON.stringify(user);
+        localStorage.setItem('token', token);
+        localStorage.setItem('user', u);
+        toast.success(message);
         history("/home");
       }).catch((e) => {
         console.log(e);
@@ -59,6 +63,9 @@ function Login() {
       <div className="bg-black text-cyan-50 mx-10 mb-7  flex justify-center shadow-md shadow-gray-600">
         <input className="" type="submit" value="Login" onClick={ handleClick } />
       </div>
+    </div>
+    <div className=" text-cyan-50 mx-10 mb-7 mt-40  flex justify-center">
+        <h5 onClick={() => history("/register")}>Cadastrar Nova Conta</h5>
     </div>
    </div>
   );

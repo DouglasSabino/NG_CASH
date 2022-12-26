@@ -6,7 +6,6 @@ const controllersUsers = {
   /** @type { import('express').RequestParamHandler } */ 
   register: async (req, res, next) => {
     try {
-      console.log(req.body);
       await schemaRegistration.validationRegistration(req.body);
       const error = await servicesUsers.register(req.body);
       if (error) {

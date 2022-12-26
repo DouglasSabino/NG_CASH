@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import { toast } from 'react-toastify';
 import appContext from '../context/appContext';
 import Axios from 'axios';
+import { useNavigate } from 'react-router-dom'; 
 
 function Register() {
   const { 
@@ -11,18 +12,25 @@ function Register() {
     setPassword, 
   } = useContext(appContext);
 
+  const history = useNavigate();
+
   const handleClick = () => {
       Axios.post('http://localhost:3001/register',{
         username: user,
         password
       }).then((_response) => {
+        history('/login');
         toast.success('Usuario Criado com Sucesso');
       }).catch((e) => {
-        if (e.response.data.message.includes('Usuario já cadastrado')) {
-          toast.error(e.response.data.message);  
-        } else {
-          toast.error(e.message);
-        }
+      if (
+          e.response.data.message.includes('Usuario já cadastrado') ||
+          e.response.data.message.includes('3 Caracteres') ||
+          e.response.data.message.includes('password')
+         ) {
+            toast.error(e.response.data.message);
+           } else {
+            toast.error(e.message);
+           }
       });
   };
 

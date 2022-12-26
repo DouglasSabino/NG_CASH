@@ -58,11 +58,13 @@
   <li>Tailwind CSS</li>
   <li>Node</li>
   <li>Express</li>
+  <li>Axios</li>
   <li>Joi</li>
   <li>JWT</li>
   <li>Bcrypt</li>
   <li>MySql</li>
-  <li>Javascipt</li>
+  <li>JavaScript</li>
+  <li>LocalStorage</li>
 </ul>
 
 <h2>⚠️ IMPORTANTE ⚠️</h2>
