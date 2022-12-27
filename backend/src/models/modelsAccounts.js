@@ -3,8 +3,8 @@ const cuid = require('cuid');
 
 const modelsAccounts = {
     getAccount: async (id) => {
-      const SQL_GET_ACCOUNTS = 'SELECT * FROM Accounts WHERE id=?'; 
-      const [Accounts] = await db.query(SQL_GET_ACCOUNTS, [id]);
+      const SQL_GET_ACCOUNT = 'SELECT * FROM Accounts WHERE id=?'; 
+      const [Accounts] = await db.query(SQL_GET_ACCOUNT, [id]);
       return Accounts;
     },
     createAccount: async () => {

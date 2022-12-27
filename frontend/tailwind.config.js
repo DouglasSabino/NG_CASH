@@ -5,6 +5,10 @@ module.exports = {
     extend: {
       backgroundImage: {
         'background-login': "url('../public/images/background.jpg')",
+      },
+      fontFamily: {
+        roboto: ['Roboto', 'sans-serif'],
+        gentium: ['Gentium Book Plus', 'serif']
       }
     },
   },

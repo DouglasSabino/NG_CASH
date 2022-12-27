@@ -2,8 +2,8 @@ const { modelsAccounts } = require('../models/modelsAccounts');
 
 const servicesAccounts = {
   getAccount: async (id) => {
-    const accounts = await modelsAccounts.getAccount(id);
-    return accounts;
+    const account = await modelsAccounts.getAccount(id);
+    return account;
   },
 };
 

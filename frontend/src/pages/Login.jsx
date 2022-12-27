@@ -60,8 +60,8 @@ function Login() {
           onChange={ handleChange }
         />
       </div>
-      <div className="bg-black text-cyan-50 mx-10 mb-7  flex justify-center shadow-md shadow-gray-600">
-        <input className="" type="submit" value="Login" onClick={ handleClick } />
+      <div className="bg-black  text-cyan-50 mx-10 mb-7  flex justify-center shadow-md shadow-gray-600">
+        <input className="font-gentium" type="submit" value="Login" onClick={ handleClick } />
       </div>
     </div>
     <div className=" text-cyan-50 mx-10 mb-7 mt-40  flex justify-center">
