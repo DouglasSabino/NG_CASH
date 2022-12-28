@@ -56,12 +56,19 @@ function Home() {
   }
 
   return (
-   <div className='h-[100vh] w-[100vw]'>
-    <div className='pl-16 bg-slate-400 shadow-md flex justify-center' >
-     <h1 className='font-gentium text-4xl mr-auto' >Olá {user.username}</h1>
+   <div className='bg-slate-400 h-[100vh] w-[100vw]'>
+    <div className='py-6 pl-16 bg-black shadow-md shadow-white flex justify-center' >
+     <h1 className=' text-white pt-5 w-96 font-gentium text-4xl mr-0' >Olá {user.username}</h1>
+     <div className='mr-auto ml-auto w-[80px]'>
+       <img
+        className='shadow-2x' 
+        src="https://play-lh.googleusercontent.com/OvpI_Ut-8B3-Z7t0iu4y0oKjInkCcu8vNVzQP48eb6fG89xODw7gqsB26_ozYgsBWxU" 
+        alt="logo NG Cash"
+       />
+     </div>
      {/*Deixar class 'enable' sempre por ultimo no atributo className da tag p'*/}
-     <h2 className='font-gentium text-4xl flex pr-5'>Saldo Atual: <p className='w-20 ml-3 mr-3 enable' ref={containerRef}>{!showBalance ? balance.toFixed(2) : '******' }</p></h2>
-     <div onClick={ changePassword } className='text-4xl pr-16  pt-1'>
+     <h2 className='text-white pt-5 font-gentium text-4xl flex pr-5'>Saldo Atual: <p className='text-white w-20 ml-3 mr-3 enable' ref={containerRef}>{!showBalance ? balance.toFixed(2) : '******' }</p></h2>
+     <div onClick={ changePassword } className='text-white text-4xl pr-16 pt-5'>
       { showBalance ?  <AiFillEye /> : <AiFillEyeInvisible /> }
      </div>
     </div>
