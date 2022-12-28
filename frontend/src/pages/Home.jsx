@@ -1,3 +1,4 @@
+import Transactions from '../components/Transactions';
 import { useEffect, useContext, useRef } from 'react';
 import appContext from '../context/appContext';
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
@@ -36,6 +37,7 @@ function Home() {
     const arrayClasses = classes.split(' ');
     if (classes.includes('enable')) {
       const balanceValue = containerRef.current.innerText;
+      console.log(balanceValue);
       const vetorBalance = balanceValue.split('');
       const cryptBalanceVetor = vetorBalance.map((_e) => '*');
       const cryptBalance = cryptBalanceVetor.join('');
@@ -59,7 +61,7 @@ function Home() {
    <div className='bg-slate-400 h-[100vh] w-[100vw]'>
     <div className='py-6 pl-16 bg-black shadow-md shadow-white flex justify-center' >
      <h1 className=' text-white pt-5 w-96 font-gentium text-4xl mr-0' >Olá {user.username}</h1>
-     <div className='mr-auto ml-auto w-[80px]'>
+     <div className='mr-auto ml-[20vw] w-[80px]'>
        <img
         className='shadow-2x' 
         src="https://play-lh.googleusercontent.com/OvpI_Ut-8B3-Z7t0iu4y0oKjInkCcu8vNVzQP48eb6fG89xODw7gqsB26_ozYgsBWxU" 
@@ -72,6 +74,7 @@ function Home() {
       { showBalance ?  <AiFillEye /> : <AiFillEyeInvisible /> }
      </div>
     </div>
+    <Transactions />
    </div>
   );
 }
