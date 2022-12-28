@@ -10,7 +10,7 @@ const modelsAccounts = {
     createAccount: async () => {
       const SQL_CREATE_ACCOUNT = 'INSERT INTO Accounts (id, balance) VALUES (?,?)';
       const id = cuid();
-      await db.query(SQL_CREATE_ACCOUNT, [id, 100]);
+      await db.query(SQL_CREATE_ACCOUNT, [id, 100.00]);
       return id;
     },
     deleteAccount: async (AccountId) =>  {

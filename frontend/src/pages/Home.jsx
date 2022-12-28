@@ -1,11 +1,20 @@
 import { useEffect, useContext, useRef } from 'react';
 import appContext from '../context/appContext';
-import { AiFillEye } from "react-icons/ai";
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import Axios from 'axios';
 
 function Home() {
   const containerRef = useRef();
-  const { balance, setBalance, user, setUser } = useContext(appContext);
+
+  const { 
+    balance, 
+    setBalance, 
+    user, 
+    setUser, 
+    showBalance, 
+    setShowBalance 
+  } = useContext(appContext);
+
   useEffect(() => {
    const user = JSON.parse(localStorage.getItem('user'));
    setUser(user);
@@ -17,29 +26,32 @@ function Home() {
      }
    }).then((result) => {
       setBalance(result.data[0].balance);
-   })
+      setShowBalance(true);
+    })
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[]);
 
   const changePassword = () => {
-    let situation = containerRef.current.className;
-    const vetorSituation = situation.split(' ');
-    if (situation.includes('enable')) {
+    let classes = containerRef.current.className;
+    const arrayClasses = classes.split(' ');
+    if (classes.includes('enable')) {
       const balanceValue = containerRef.current.innerText;
       const vetorBalance = balanceValue.split('');
       const cryptBalanceVetor = vetorBalance.map((_e) => '*');
       const cryptBalance = cryptBalanceVetor.join('');
       containerRef.current.innerText = cryptBalance;
-      vetorSituation.pop();
-      const s = vetorSituation.join(',');
-      const replace = s.replace(/,/g, " ");
-      containerRef.current.className = replace
+      arrayClasses.pop();
+      const stringClasses = arrayClasses.join(',');
+      const replacedString = stringClasses.replace(/,/g, " ");
+      containerRef.current.className = replacedString;
+      setShowBalance(false);
     }else {
-      containerRef.current.innerText = balance;
-      vetorSituation.push('enable');
-      const s = vetorSituation.join(',');
-      const replace = s.replace(/,/g, " ");
-      containerRef.current.className = replace
+      containerRef.current.innerText = balance.toFixed(2);
+      arrayClasses.push('enable');
+      const stringClasses = arrayClasses.join(',');
+      const replacedString = stringClasses.replace(/,/g, " ");
+      containerRef.current.className = replacedString;
+      setShowBalance(true);
     }
   }
 
@@ -48,9 +60,9 @@ function Home() {
     <div className='pl-16 bg-slate-400 shadow-md flex justify-center' >
      <h1 className='font-gentium text-4xl mr-auto' >Olá {user.username}</h1>
      {/*Deixar class 'enable' sempre por ultimo no atributo className da tag p'*/}
-     <h2 className='font-gentium text-4xl flex pr-5'>Saldo Atual: <p className='w-20 ml-3 mr-3 enable' ref={containerRef}>{balance}</p></h2>
+     <h2 className='font-gentium text-4xl flex pr-5'>Saldo Atual: <p className='w-20 ml-3 mr-3 enable' ref={containerRef}>{!showBalance ? balance.toFixed(2) : '******' }</p></h2>
      <div onClick={ changePassword } className='text-4xl pr-16  pt-1'>
-      <AiFillEye />
+      { showBalance ?  <AiFillEye /> : <AiFillEyeInvisible /> }
      </div>
     </div>
    </div>

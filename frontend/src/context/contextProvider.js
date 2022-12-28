@@ -6,7 +6,7 @@ function ContextProvider({ children }) {
   const [user, setUser] = useState('');
   const [password, setPassword] = useState('');
   const [balance, setBalance] = useState(0);
- 
+  const [showBalance, setShowBalance] = useState(true);
 
   const contextValue = {
     user,
@@ -14,7 +14,9 @@ function ContextProvider({ children }) {
     password,
     setPassword,
     balance,
-    setBalance
+    setBalance,
+    showBalance,
+    setShowBalance
   };
   
   return (
