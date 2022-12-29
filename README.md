@@ -58,6 +58,7 @@
   <li>Tailwind CSS</li>
   <li>Node</li>
   <li>Express</li>
+  <li>Thunder Client</li>
   <li>Axios</li>
   <li>Joi</li>
   <li>JWT</li>
