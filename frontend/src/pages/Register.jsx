@@ -69,8 +69,13 @@ function Register() {
           onChange={ handleChange }
         />
       </div>
-      <div className="bg-black text-cyan-50 mx-10 mb-7  flex justify-center shadow-md shadow-gray-600">
-        <input className="" type="submit" value="Register" onClick={ handleClick } />
+      <div 
+        onClick={ handleClick } 
+        className="bg-black hover:cursor-pointer font-gentium 
+                   text-cyan-50 mx-10 mb-7  flex justify-center 
+                   shadow-md shadow-gray-600 hover:shadow"
+      >
+        <input className="hover:cursor-pointer" type="submit" value="Register"/>
       </div>
     </div>
    </div>

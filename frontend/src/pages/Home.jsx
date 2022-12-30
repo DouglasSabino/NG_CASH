@@ -58,7 +58,7 @@ function Home() {
   }
 
   return (
-   <div className='bg-slate-400 h-[100vh] w-[100vw]'>
+   <div className='bg-slate-700 h-[100vh] w-[100vw]'>
     <div className='py-6 pl-16 bg-black shadow-md shadow-white flex justify-center' >
      <h1 className=' text-white pt-5 w-96 font-gentium text-4xl mr-0' >Olá {user.username}</h1>
      <div className='mr-auto ml-[20vw] w-[80px]'>

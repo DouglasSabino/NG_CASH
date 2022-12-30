@@ -60,12 +60,17 @@ function Login() {
           onChange={ handleChange }
         />
       </div>
-      <div className="bg-black  text-cyan-50 mx-10 mb-7  flex justify-center shadow-md shadow-gray-600">
-        <input className="font-gentium" type="submit" value="Login" onClick={ handleClick } />
+      <div onClick={ handleClick } className="bg-black hover:cursor-pointer hover:shadow font-gentium text-cyan-50 mx-10 mb-7  flex justify-center shadow-md shadow-gray-600">
+        <input className="hover:cursor-pointer" type="submit" value="Login"/>
       </div>
     </div>
     <div className=" text-cyan-50 mx-10 mb-7 mt-40  flex justify-center">
-        <h5 onClick={() => history("/register")}>Cadastrar Nova Conta</h5>
+        <h5 
+          className='text-xl hover:cursor-pointer font-gentium' 
+          onClick={() => history("/register")}
+        >
+            Cadastrar Nova Conta
+        </h5>
     </div>
    </div>
   );
