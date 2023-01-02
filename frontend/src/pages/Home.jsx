@@ -70,7 +70,7 @@ function Home() {
      </div>
      {/*Deixar class 'enable' sempre por ultimo no atributo className da tag p'*/}
      <h2 className='text-white pt-5 font-gentium text-4xl flex pr-5'>Saldo Atual: <p className='text-white w-20 ml-3 mr-3 enable' ref={containerRef}>{!showBalance ? balance.toFixed(2) : '******' }</p></h2>
-     <div onClick={ changePassword } className='text-white text-4xl pr-16 pt-5'>
+     <div onClick={ changePassword } className='text-white text-4xl hover:cursor-pointer pr-16 pt-5'>
       { showBalance ?  <AiFillEye /> : <AiFillEyeInvisible /> }
      </div>
     </div>

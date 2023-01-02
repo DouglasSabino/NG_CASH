@@ -72,7 +72,7 @@ function Register() {
       <div 
         onClick={ handleClick } 
         className="bg-black hover:cursor-pointer font-gentium 
-                   text-cyan-50 mx-10 mb-7  flex justify-center 
+                   text-cyan-50 mx-10 mb-7 flex justify-center 
                    shadow-md shadow-gray-600 hover:shadow"
       >
         <input className="hover:cursor-pointer" type="submit" value="Register"/>

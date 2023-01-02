@@ -4,10 +4,11 @@ import appContext from './appContext';
 
 function ContextProvider({ children }) {
   const [user, setUser] = useState('');
+  const [userToRecive, setUserToRecive] = useState('');
   const [password, setPassword] = useState('');
   const [balance, setBalance] = useState(0);
   const [showBalance, setShowBalance] = useState(true);
-  const [valueToTransfer, setValueToTransfer] = useState(0.00);
+  const [valueToTransfer, setValueToTransfer] = useState('0');
 
   const contextValue = {
     user,
@@ -19,7 +20,9 @@ function ContextProvider({ children }) {
     showBalance,
     setShowBalance,
     valueToTransfer,
-    setValueToTransfer
+    setValueToTransfer,
+    userToRecive, 
+    setUserToRecive
   };
   
   return (
