@@ -9,4 +9,6 @@ routerTransactions.post('/', handlerTokenValidation, controllersTransactions.tra
 
 routerTransactions.post('/find', handlerTokenValidation, controllersTransactions.findBy);
 
+routerTransactions.get('/find', handlerTokenValidation, controllersTransactions.getAllByUser)
+
 module.exports = { routerTransactions };

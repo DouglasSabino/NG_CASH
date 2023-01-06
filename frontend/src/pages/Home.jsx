@@ -1,4 +1,5 @@
 import Transactions from '../components/Transactions';
+import BankHistory from '../components/BankHistory';
 import { useEffect, useContext, useRef } from 'react';
 import appContext from '../context/appContext';
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
@@ -59,7 +60,7 @@ function Home() {
 
   return (
    <div className='bg-slate-700 h-[100vh] w-[100vw]'>
-    <div className='py-6 pl-16 bg-black shadow-md shadow-white flex justify-center' >
+    <div className='py-6 pl-16 bg-black shadow-lg shadow-white flex justify-center' >
      <h1 className=' text-white pt-5 w-96 font-gentium text-4xl mr-0' >Olá {user.username}</h1>
      <div className='mr-auto ml-[20vw] w-[80px]'>
        <img
@@ -74,7 +75,10 @@ function Home() {
       { showBalance ?  <AiFillEye /> : <AiFillEyeInvisible /> }
      </div>
     </div>
-    <Transactions />
+    <div className='flex'>
+      <Transactions />
+      <BankHistory />
+    </div>
    </div>
   );
 }

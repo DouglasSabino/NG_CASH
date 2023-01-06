@@ -9,6 +9,7 @@ function ContextProvider({ children }) {
   const [balance, setBalance] = useState(0);
   const [showBalance, setShowBalance] = useState(true);
   const [valueToTransfer, setValueToTransfer] = useState('0');
+  const [bankHistory, setBankHistory] = useState([]);
 
   const contextValue = {
     user,
@@ -22,7 +23,9 @@ function ContextProvider({ children }) {
     valueToTransfer,
     setValueToTransfer,
     userToRecive, 
-    setUserToRecive
+    setUserToRecive,
+    bankHistory, 
+    setBankHistory
   };
   
   return (

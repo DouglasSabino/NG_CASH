@@ -1,7 +1,7 @@
 // SEEDS Accounts 
-INSERT INTO Accounts (id, balance) VALUES ('clbmnwaru0000t888fdtt4j64', 1200.87);
-INSERT INTO Accounts (id, balance) VALUES ('clbmnwrz30002t8886l8tfr82', 1600.53);
-INSERT INTO Accounts (id, balance) VALUES ('clbmnww5v0004t888br41by9l', 1700);
+INSERT INTO Accounts (id, balance) VALUES ('clbmnwaru0000t888fdtt4j64', 502.87);
+INSERT INTO Accounts (id, balance) VALUES ('clbmnwrz30002t8886l8tfr82', 685.53);
+INSERT INTO Accounts (id, balance) VALUES ('clbmnww5v0004t888br41by9l', 258.53);
 
 // DEFAULT PASSWORD = Senha123
 // SEEDS Users

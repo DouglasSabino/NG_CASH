@@ -27,7 +27,6 @@ function Transactions() {
   }
 
   const clickToSendMoney = () => {
-    console.log(userToRecive);
     Axios.post('http://localhost:3001/transactions', {
       userToReceive: userToRecive, 
       balance: Number(valueToTransfer)
@@ -37,7 +36,7 @@ function Transactions() {
       }
     })
     .then((response) => {
-      console.log(response);
+      setValueToTransfer('0')
       toast.success(response.data)
     })
     .catch((e) => {

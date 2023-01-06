@@ -1,6 +1,12 @@
 const { modelsTransactions } = require('../models/modelsTransactions');
+const { makeToken } = require('../utils/makeTokenJwt');
 
 const servicesTransactions = {
+  getAllByUser: async (Auth) => {
+    const user = makeToken.decoder(Auth);
+    const extract = await modelsTransactions.getAllByUser(user.payload);
+    return extract;
+  },
   cashout: async (debitedAccount, creditedAccount, value) => {
     await modelsTransactions.cashout(debitedAccount, creditedAccount, value);
   },

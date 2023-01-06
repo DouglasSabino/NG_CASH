@@ -5,9 +5,15 @@ const moment  = require('moment');
 const { db } = require('./connection');
 
 const modelsTransactions = {
+  getAllByUser: async (user) => {
+    const SQL_GET_ALL_BY_USER = 'SELECT * FROM Transactions WHERE debitedAccountId=? OR creditedAccountId=?';
+    const [extract] = await db.query(SQL_GET_ALL_BY_USER, [user.accountId, user.accountId]); 
+    console.log(extract);
+    return extract;
+  },
   transactions: async (body, loggedUser) => {
     const { userToReceive, balance } = body;
-    const user = await modelsLogin.verifyIfUserExist(userToReceive); 
+    const user = await modelsLogin.verifyIfUserExist(userToReceive);
     const loggedAccount = await modelsUsers.verifyBalance(loggedUser);
     return [user, loggedAccount];
   },
