@@ -16,9 +16,9 @@ const controllersTransactions = {
       const { authorization: token } = req.headers;
       const loggedUser = makeToken.decoder(token);
       const [reciveUser, loggedAccount] = await servicesTransactions.transactions(req.body, loggedUser.payload);
-      const [{ ...restofUserToCredit }] = reciveUser;
-      if (loggedUser.payload.username === restofUserToCredit.username) return next('UNATUTHORIZED_TRANSACTION') 
       if (reciveUser.length < 1) return next('ACCOUNT_NOT_EXIST');
+      const [{ password, salt, ...restofUserToCredit }] = reciveUser;
+      if (loggedUser.payload.username === restofUserToCredit.username) return next('UNATUTHORIZED_TRANSACTION') 
       if (Number(loggedAccount[0].balance) < Number(balance)) return next('INSUFFICIENT_BALANCE');
       await servicesTransactions.cashout(loggedUser.payload, restofUserToCredit, balance);
       await servicesTransactions.registerTransictions(loggedUser.payload,restofUserToCredit, balance);
