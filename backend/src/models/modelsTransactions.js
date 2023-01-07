@@ -1,14 +1,13 @@
 const { modelsLogin } = require('./modelsLogin');
 const { modelsUsers } = require('./modelsUsers');
+const { getMoment } = require('../utils/getMoment');
 const cuid = require('cuid');
-const moment  = require('moment');
 const { db } = require('./connection');
 
 const modelsTransactions = {
   getAllByUser: async (user) => {
     const SQL_GET_ALL_BY_USER = 'SELECT * FROM Transactions WHERE debitedAccountId=? OR creditedAccountId=?';
     const [extract] = await db.query(SQL_GET_ALL_BY_USER, [user.accountId, user.accountId]); 
-    console.log(extract);
     return extract;
   },
   transactions: async (body, loggedUser) => {
@@ -34,7 +33,7 @@ const modelsTransactions = {
   },
   registerTransictions: async (loggedUser,restofUserToCredit, balance) => {
     const SQL_REGISTER_TRANSACTION = "INSERT INTO Transactions (id, debitedAccountId, creditedAccountId, value, createdAt) VALUES (?,?,?,?,?)";
-    const timestamp = moment(Date.now()).format('YYYY-MM-DD HH:MM');
+    const timestamp = getMoment();
     await db.query(SQL_REGISTER_TRANSACTION, [cuid(), loggedUser.accountId, restofUserToCredit.accountId, balance, timestamp]);
   },
   findByDate: async (date) => {
